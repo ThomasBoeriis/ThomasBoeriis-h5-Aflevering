@@ -25,7 +25,7 @@ namespace Event.Api.Controllers
         { 
             string[] catIds = {};
             if (categories != "") { 
-             catIds = categories.Split(',');
+             catIds = categories.TrimEnd(',').Split(',');
             }
 
             var data = db.Events.Where(
