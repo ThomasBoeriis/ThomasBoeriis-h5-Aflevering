@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Event.Models.Events>
+
+@{
+    ViewBag.Title = "Index";
+}
+<p>
+    @Html.ActionLink("Create New", "Create",null, new {@class= "btn btn-success"})
+</p>
+<table class="table">
+    <tr>
+            
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EventEnd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfTickets)
+        </th>
+        <th>
+            Kategori
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location.Adress)
+        </th>
+     
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+           
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @item.EventStart.ToString("dd ddd/MMM/yyyy HH:mm")
+        </td>
+        <td>
+            @item.EventEnd.ToString("dd ddd/MMM/yyyy HH:mm")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfTickets)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categories.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location.Adress)
+            @Html.DisplayFor(modelItem => item.Location.Zipcode)
+            @Html.DisplayFor(modelItem => item.Location.City)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+    
+</table>
